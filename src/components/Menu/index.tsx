@@ -11,11 +11,19 @@ import {
   SignOutButton,
   SignOutButtonText,
 } from './styles';
-
-const Menu: React.FC = () => {
+interface AnimationProps extends StyleMedia {
+  translateY: number | any;
+}
+const Menu: React.FC = ({translateY}: AnimationProps) => {
   return (
     <>
-      <Container>
+      <Container
+        style={{
+          opacity: translateY.interpolate({
+            inputRange: [0, 150],
+            outputRange: [0, 1],
+          }),
+        }}>
         <Code>
           <QRCode />
         </Code>
